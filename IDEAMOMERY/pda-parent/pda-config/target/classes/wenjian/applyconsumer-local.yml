@@ -1,0 +1,12 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: APPLYCONSUMER
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8081/eureka/
+    register-fetch-interval-seconds: 100

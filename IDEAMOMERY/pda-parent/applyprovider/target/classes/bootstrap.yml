@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9091
+      name: applyprovider
+      profile: local

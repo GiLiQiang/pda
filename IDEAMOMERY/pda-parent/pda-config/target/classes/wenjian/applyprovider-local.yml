@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  application:    #设置本服务得名称
+    name: FFFFFFFFFFF
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8081/eureka/   # 去服务中心进行注册
+    registry-fetch-interval-seconds: 30 # 每隔多久去更新一下本地的注册表缓存信息
+
+APPLYCONSUMER:      # 编写调用服务名称
+  ribbon:     #设置负载均衡算法
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+
+feign:
+  hystrix:
+    enabled: true # 开启feign服务降级

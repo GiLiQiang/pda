@@ -1,0 +1,14 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: APPLYCONFIG
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:wenjian
+

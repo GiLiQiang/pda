@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>pda-eureka</module>
+        <module>pda-common</module>
+        <module>pda-applyconsumer</module>
+        <module>applyprovider</module>
+        <module>pda-gateway</module>
+        <module>pda-config</module>
+        <module>pda-setmq</module>
+        <module>pda-search</module>
+        <module>pda-getmq</module>
+
+    </modules>
+    <properties>
+        <!-- 项目源码及编译输出的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 项目编译JDK版本 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <groupId>org.example</groupId>
+    <artifactId>pda-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+        <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.2.6.RELEASE</version>
+            <relativePath/>
+        </parent>
+    <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>Hoxton.SR4</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <!-- spring-boot-starter -->
+        <!-- spring-boot-starter-web -->
+        <!-- spring-boot-devtools -->
+        <!-- spring-boot-starter-test -->
+        <!-- tomcat-embed-jasper -->
+        <!-- mybatis-spring-boot-starter -->
+        <!-- druid-spring-boot-starter -->
+        <!-- pagehelper-spring-boot-starter -->
+
+        <!-- javax.servlet-api -->
+        <!-- spring-context -->
+        <!-- spring-aspects -->
+        <!-- spring-web -->
+        <!-- spring-webmvc -->
+        <!-- spring-jdbc -->
+        <!-- jackson-databind -->
+        <!-- hibernate-validator -->
+        <!-- taglibs-standard-impl -->
+        <!-- taglibs-standard-spec -->
+        <!-- mysql-connector-java -->
+        <!-- druid -->
+        <!-- mybatis -->
+        <!-- mybatis-spring -->
+        <!-- pagehelper -->
+        <!-- log4j -->
+    </dependencies>
+    </dependencyManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>*.xml</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- 配置Tomcat插件 -->
+            <!--端口号-->
+            <!--项目名-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,33 @@
+server:
+  port: 8091
+
+spring:
+  application:    #设置本服务得名称
+    name: APPLYGATEWAY
+  cloud:       #  设置路由
+    gateway:
+      routes:
+        - id: applyconsumer  #给自己看的名，实际用不到
+          predicates:        #设置服务得真实路径
+            - Path=/apply/**
+          uri: lb://FFFFFFFFFFF  #服务提供者名称
+        - id: applyconsumer
+          predicates:
+            - Path=/dao/**
+          uri: lb://APPLYCONSUMER
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8081/eureka/   # 去服务中心进行注册
+#    registry-fetch-interval-seconds: 30 # 每隔多久去更新一下本地的注册表缓存信息
+
+
+APPLYCONSUMER:      # 编写调用服务名称
+  ribbon:     #设置负载均衡算法
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+
+FFFFFFFFFFF:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
