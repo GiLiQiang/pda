@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--
+   日志输出格式(更多格式参考官方文档 https://logback.qos.ch/manual/layouts.html ):
+   %-5level
+   %d{yyyy-MM-dd HH:mm:ss.SSS}日期
+   %c类的完整名称
+   %M为method
+   %L为行号
+   %thread线程名称
+   %m或者%msg为信息
+   %n换行
+-->
+    <property name="LOG_PATTERN" value="[%-5p] [%d] [%caller] %n%m%n%n"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%highlight([%-5p] [%d] [%class.%method %file:%line]) %n%m%n%n"/>
+    <property name="CONSOLE_LOG_PATTERN_CALLER"
+              value="%highlight([%-5p] [%d] [%caller]) %n%m%n%n"/>
+    <property name="LOG_FOLDER" value=""/>
+
+    <!--
+   Appender: 设置日志信息的去向,常用的有以下几个
+   - ch.qos.logback.core.ConsoleAppender (控制台)
+   - ch.qos.logback.core.rolling.RollingFileAppender (文件大小到达指定尺 寸的时候产生一个新文件)
+   - ch.qos.logback.core.FileAppender (文件)
+-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+
+        <!--输出流对象 默认 System.out 改为 System.err-->
+        <target>System.out</target>
+        <target>com.aitanjupt.angel.log.DBAppender</target>
+
+        <!--日志格式配置-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+
+
+    <root level="ALL">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
